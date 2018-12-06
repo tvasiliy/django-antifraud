@@ -1,0 +1,17 @@
+amqp==2.3.2
+atomicwrites==1.2.1
+attrs==18.2.0
+billiard==3.5.0.5
+celery==4.2.1
+Django==2.1.4
+djangorestframework==3.9.0
+kombu==4.2.1
+more-itertools==4.3.0
+pluggy==0.8.0
+psycopg2==2.7.6.1
+py==1.7.0
+pytest==4.0.1
+pytest-django==3.4.4
+pytz==2018.7
+six==1.11.0
+vine==1.1.4
