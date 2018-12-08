@@ -1,8 +1,17 @@
-version: '3'
+version: '3.6'
+
+volumes:
+  database_data:
+    driver: local
 
 services:
   db:
     image: postgres
+    volumes:
+      - database_data:/var/lib/postgresql/data
+  redis:
+    image: "redis:alpine"
+    restart: "on-failure"
   web:
     build: .
     command: python3 manage.py runserver 0.0.0.0:8000
@@ -10,5 +19,17 @@ services:
       - .:/django-antifraud
     ports:
       - "8000:8000"
+    env_file:
+      - ./.env
     depends_on:
       - db
+  celery-beat:
+    build: .
+    command: celery -A django_antifraud beat -l info
+    volumes:
+      - .:/django-antifraud
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+      - redis

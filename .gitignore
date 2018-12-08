@@ -113,3 +113,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# storage
+storage
+# celery
+celerybeat
+# vscode
+.vscode
