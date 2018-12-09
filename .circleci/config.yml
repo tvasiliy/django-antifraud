@@ -12,7 +12,14 @@ jobs:
         environment:
           SECRET_KEY: 'test_key'
           BROKER_URL: redis://redis:6379/0
-      - image: circleci/postgres:9.4
+          DATABASE_NAME: antifraud_test
+          DATABASE_USER: root
+          DATABASE_HOST: localhost
+          DATABASE_PORT: '5432'
+      - image: circleci/postgres:9.6.11
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: antifraud_test
       - image: redis:alpine
 
     working_directory: ~/repo
