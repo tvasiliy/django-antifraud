@@ -19,8 +19,3 @@ def sync_torlist():
             Tor.remove_old_rows()
     else:
         print('HttpStatus!=Ok' + response.status_code)
-
-
-@shared_task
-def hello():
-    print("Hello there!")

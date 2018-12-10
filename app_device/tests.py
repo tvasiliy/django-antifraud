@@ -1,4 +1,3 @@
-from django.test import TestCase
 from django.urls import reverse
 from rest_framework.test import APITestCase, APIClient
 from rest_framework.views import status
@@ -66,16 +65,16 @@ class GetAllDataTest(BaseViewTest):
 
     def test_api_check_device_invalid(self):
         response = self.client.get(
-            reverse("check_device", kwargs={"version": "v1"})
+            reverse("check_device", kwargs={"version": "v1"}),
+            {"ip": "0.0.0"}
         )
-        print(response.data)
-        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['result'], 'error')
 
     def test_api_check_device_missing_param(self):
         response = self.client.get(
             reverse("check_device", kwargs={"version": "v1"})
         )
-        print(response.data)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_api_check_device_valid_and_found(self):
@@ -83,7 +82,6 @@ class GetAllDataTest(BaseViewTest):
             reverse("check_device", kwargs={"version": "v1"}),
             {"ip": "2001:49f0:d002:0002:0000:0000:0000:0054"}
         )
-        print(response.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_api_check_device_valid_and_not_found(self):
@@ -91,5 +89,4 @@ class GetAllDataTest(BaseViewTest):
             reverse("check_device", kwargs={"version": "v1"}),
             {"ip": "0.0.0.1"}
         )
-        print(response.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)

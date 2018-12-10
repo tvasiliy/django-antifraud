@@ -26,6 +26,6 @@ class Checker(models.Model):
         max_length=40,
         validators=[validate_ipv46_address],
     )
-    is_tor = models.BooleanField(default=None,)
-    is_proxy = models.BooleanField(default=None,)
+    is_tor = models.BooleanField(default=None, null=True)
+    is_proxy = models.BooleanField(default=None, null=True)
     tms_created = models.DateTimeField(auto_now_add=True, blank=True)
