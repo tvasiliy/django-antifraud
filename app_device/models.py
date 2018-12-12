@@ -14,9 +14,11 @@ class Tor(models.Model):
     def __str__(self):
         return self.tor_ip
 
+    @staticmethod
     def deactivate_all_ips():
         Tor.objects.filter(is_activated=True).update(is_activated=False)
 
+    @staticmethod
     def remove_old_rows():
         Tor.objects.filter(is_activated=False).delete()
 

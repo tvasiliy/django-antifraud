@@ -22,12 +22,12 @@ class BaseViewTest(APITestCase):
         # add test data
         self.create_torip("103.234.220.197")
         self.create_torip("2001:49f0:d002:0002:0000:0000:0000:0054")
-        self.create_torip("0.0.0.0")
+        self.create_torip("192.168.0.1")
         self.create_torip("127.0.0.1")
 
-        self.create_history("0.0.0.0", True, False)
+        self.create_history("192.168.0.1", True, False)
         self.create_history("127.0.0.1", True, True)
-        self.create_history("0.0.0.0", False, False)
+        self.create_history("192.168.0.1", False, False)
         self.create_history("127.0.0.1", False, True)
 
 

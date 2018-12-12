@@ -116,7 +116,7 @@ dmypy.json
 
 # storage
 storage
-# celery
+# celery sbeat
 celerybeat
 # vscode
 .vscode
