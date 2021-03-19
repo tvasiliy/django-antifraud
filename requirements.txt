@@ -6,7 +6,7 @@ celery==4.2.1
 certifi==2018.11.29
 chardet==3.0.4
 Django==2.2.10
-djangorestframework==3.9.1
+djangorestframework==3.11.2
 envparse==0.2.0
 flake8==3.6.0
 idna==2.7
